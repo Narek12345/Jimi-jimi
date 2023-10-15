@@ -31,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # My overriding apps:
+    'account.apps.AccountConfig',
+
+    # Django apps:
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
