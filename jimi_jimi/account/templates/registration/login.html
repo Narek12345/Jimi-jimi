@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+	<h1>Login</h1>
+	{% if form.errors %}
+		<p>
+			An error has occurred. Please try again.
+		</p>
+	{% endif %}
+	<form action="{% url 'account:login' %}" method="post">
+		{{ form.as_p }}
+		{% csrf_token %}
+		<input type="submit">
+	</form>
+{% endblock %}
