@@ -6,7 +6,7 @@ from .forms import UserRegistrationForm
 
 
 def dashboard(request):
-	return render(request, 'dashboard.html')
+	return render(request, 'account/dashboard.html')
 
 
 def register(request):
@@ -27,4 +27,4 @@ def register(request):
 def logout(request):
 	messages.success(request, 'You have successfully logged out')
 	auth_logout(request)
-	return render(request, 'dashboard.html')
+	return render(request, 'account/dashboard.html')
