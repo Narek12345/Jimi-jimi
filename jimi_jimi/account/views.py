@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.contrib.auth import logout as auth_logout
+from django.contrib.auth import login, logout as auth_logout
 from .forms import UserRegistrationForm
 
 
@@ -17,6 +17,7 @@ def register(request):
 			new_user.set_password(form.cleaned_data['password1'])
 			new_user.save()
 			messages.success(request, 'Registration completed successfully')
+			login(request, new_user)
 			return redirect('account:dashboard')
 	else:
 		form = UserRegistrationForm()
