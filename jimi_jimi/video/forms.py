@@ -2,7 +2,7 @@ from django import forms
 from .models import Video
 
 
-class CreateVideoForm(form.ModelForm):
+class CreateVideoForm(forms.ModelForm):
 	file = forms.FileField()
 	
 	class Meta:

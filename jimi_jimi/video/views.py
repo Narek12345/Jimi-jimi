@@ -5,9 +5,12 @@ from .forms import CreateVideoForm
 
 def add_video(request):
 	if request.method == 'POST':
-		form = CreateVideoForm(data=(request.POST, request.FILES))
+		form = CreateVideoForm(request.POST, request.FILES)
 		if form.is_valid():
-			data = form.cleaned_data
-			print(data)
+			new_video = form.save(commit=False)
+			new_video.user = request.user
+			new_video.url = 'https://github.com/'
+			new_video.save()
 	else:
 		form = CreateVideoForm()
+	return render(request, 'video/add_video.html', {'form': form})
