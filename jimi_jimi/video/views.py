@@ -3,6 +3,10 @@ from .models import Video
 from .forms import CreateVideoForm
 
 
+def video_list(request):
+	return render(request, 'video/video_list.html', {})
+
+
 def add_video(request):
 	if request.method == 'POST':
 		form = CreateVideoForm(request.POST, request.FILES)
