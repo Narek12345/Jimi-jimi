@@ -11,9 +11,18 @@ def add_video(request):
 	if request.method == 'POST':
 		form = CreateVideoForm(request.POST, request.FILES)
 		if form.is_valid():
+			# Take the transferred file.
+			file = request.FILES['file']
+
+			# Create new video.
 			new_video = form.save(commit=False)
 			new_video.user = request.user
-			new_video.url = 'https://github.com/'
+
+			# Save new video.
+			new_video.save()
+			
+			# Update new video url.
+			new_video.url = f'http://127.0.0.1:8000/files/video/downloads/{new_video.id}'
 			new_video.save()
 	else:
 		form = CreateVideoForm()
