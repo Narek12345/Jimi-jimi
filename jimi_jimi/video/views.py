@@ -1,15 +1,14 @@
 import requests
 from django.shortcuts import render
-from django.views.decorators.csrf import ensure_csrf_cookie
 from .models import Video
 from .forms import CreateVideoForm
 
 
 def video_list(request):
-	return render(request, 'video/video_list.html', {})
+	all_video = Video.objects.all()
+	return render(request, 'video/video_list.html', {'all_video': all_video})
 
 
-@ensure_csrf_cookie
 def add_video(request):
 	if request.method == 'POST':
 		form = CreateVideoForm(request.POST, request.FILES)

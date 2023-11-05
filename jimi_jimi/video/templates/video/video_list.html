@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}Video List{% endblock %}
+{% block title %}
+	Video List
+{% endblock %}
 
 {% block content %}
 	<h2>Video List</h2>
+	{% for video in all_video %}
+		<video width="320" height="240" controls src="{{video.file.url}}"></video>
+		<p>{{ video.title }}</p>
+	{% endfor %}
 {% endblock %}
