@@ -23,17 +23,6 @@ def add_video(request):
 
 			# Save new video.
 			new_video.save()
-
-			file_id = new_video.id
-			
-			# Update new video url.
-			url = f'http://mysite.com:5000/files/video/downloads/{file_id}'
-			new_video.url = url
-			new_video.save()
-
-			# Uploaded file to storage.
-			files = {'file': file}
-			resp = requests.post(url, files=files)
 	else:
 		form = CreateVideoForm()
 	return render(request, 'video/add_video.html', {'form': form})
