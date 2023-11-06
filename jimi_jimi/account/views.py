@@ -5,8 +5,8 @@ from django.contrib.auth import login, logout as auth_logout
 from .forms import UserRegistrationForm
 
 
-def dashboard(request):
-	return render(request, 'account/dashboard.html')
+def profile(request):
+	return render(request, 'account/profile.html')
 
 
 def register(request):
@@ -18,7 +18,7 @@ def register(request):
 			new_user.save()
 			messages.success(request, 'Registration completed successfully')
 			login(request, new_user)
-			return redirect('account:dashboard')
+			return redirect('account:profile')
 	else:
 		form = UserRegistrationForm()
 	return render(request, 'account/register.html', {'form': form})
@@ -27,4 +27,4 @@ def register(request):
 def logout(request):
 	messages.success(request, 'You have successfully logged out')
 	auth_logout(request)
-	return render(request, 'account/dashboard.html')
+	return render(request, 'account/profile.html')

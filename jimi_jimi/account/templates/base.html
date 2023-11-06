@@ -1,17 +1,35 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, 	initial-scale=1">
 		<title>Jimi Jimi {% block title %}{% endblock %}</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'account/css/base.css' %}">
 	</head>
 	<body>
 		<div id="header">
-			{% if messages %}
-				{% for message in messages %}
-					<h3>{{ message }}</h3>
-				{% endfor %}
-			{% endif %}
+			<h1>Jimi jimi</h1>
+
+			<!-- Registration information. -->
+			<div id="auth">
+				{% if user.is_authenticated %}
+					<h2>Hello, {{ user.username }}</h2>
+					<p><a href="{% url 'account:logout' %}">logout</a></p>
+				{% else %}
+					<h2><a href="{% url 'account:login' %}">Login</a> or <a href="{% url 'account:register' %}">Register</a></h2>
+				{% endif %}
+			</div>
+
+			<!-- Display auxiliary messages on the screen. -->
+			<div id="messages">
+				{% if messages %}
+					{% for message in messages %}
+						<h3>{{ message }}</h3>
+					{% endfor %}
+				{% endif %}
+			</div>
 		</div>
 
 		<div id="content">

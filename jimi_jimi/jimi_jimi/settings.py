@@ -135,6 +135,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # User redirection options.
-LOGIN_REDIRECT_URL = 'account:dashboard'
+LOGIN_REDIRECT_URL = 'account:profile'
 LOGIN_URL = 'account:login'
 LOGOUT_URL = 'account:logout'
