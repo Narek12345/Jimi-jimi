@@ -8,3 +8,6 @@ db.sqlite3
 # Python byte code.
 __pycache__
 *.pyc
+
+# Media files.
+media
